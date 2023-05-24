@@ -9,7 +9,8 @@
  */
 int check_cmd(char **argv, char **env)
 {
-    struct stat fs;
+    /*struct stat fs;*/
+    char *command_path = find_command(argv[0]);
 
     if (_strcmp("env", argv[0]) == 0)
     {
@@ -23,24 +24,54 @@ int check_cmd(char **argv, char **env)
         }
         return 0;
     }
-
-    if (access(argv[0], F_OK) == 0)
+    if (command_path != NULL)
     {
-        if (stat(argv[0], &fs) != -1)
-        {
-            if (fs.st_mode == 16877)
-            {
-                write(STDOUT_FILENO, "bash :", 7);
-                write(STDOUT_FILENO, argv[0], strlen(argv[0]));
-                write(STDOUT_FILENO, " : is a directory\n", 19);
-            }
-            else
-                shell(argv);
-        }
+        argv[0] = command_path;
+        shell(argv);
     }
     else
-        Path(env, argv);
+    {
+        write(STDOUT_FILENO, "Command not found: ", 19);
+        write(STDOUT_FILENO, argv[0], strlen(argv[0]));
+        write(STDOUT_FILENO, "\n", 1);
+    }
+
     return 0;
+
+}
+/**
+ * find_command - Searches for a command in the PATH environment variable.
+ * @command: The command to search for.
+ * @env: The environment variables.
+ *
+ * Return: The full path of the command if found, NULL otherwise.
+ */
+char *find_command(char *command)
+{
+    char *path = getenv("PATH");
+    char *path_copy = strdup(path);
+    char *path_dir = strtok(path_copy, ":");
+
+    while (path_dir != NULL)
+    {
+        char *command_path = malloc(strlen(path_dir) + strlen(command) + 2);
+        if (command_path == NULL)
+            break;
+
+        sprintf(command_path, "%s/%s", path_dir, command);
+
+        if (access(command_path, X_OK) == 0)
+        {
+            free(path_copy);
+            return command_path;
+        }
+
+        free(command_path);
+        path_dir = strtok(NULL, ":");
+    }
+
+    free(path_copy);
+    return NULL;
 }
 
 
