@@ -36,7 +36,7 @@ int check_cmd(char **argv, char **env)
  *
  * Return: always 0
  */
-int mainw(__attribute__((unused)) int ac,
+int main(__attribute__((unused)) int ac,
 		__attribute__((unused)) char **av, char **env)
 {
 	char *line = NULL;
