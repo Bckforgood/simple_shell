@@ -6,7 +6,7 @@
  *
  * Return: always 0
  */
-int check_cmd(char **argv, char **env)
+/*int check_cmd(char **argv, char **env)
 {
 	struct stat fs;
 
@@ -27,8 +27,8 @@ int check_cmd(char **argv, char **env)
 	else
 		Path(env, argv);
 	return (0);
-}
-/**
+}*/
+/***
  * main - entry point of the shell
  * @ac: number of arguments
  * @av: array of arguments
@@ -36,7 +36,7 @@ int check_cmd(char **argv, char **env)
  *
  * Return: always 0
  */
-int main(__attribute__((unused)) int ac,
+/*int main(__attribute__((unused)) int ac,
 		__attribute__((unused)) char **av, char **env)
 {
 	char *line = NULL;
@@ -79,4 +79,4 @@ int main(__attribute__((unused)) int ac,
 		i = 0;
 	}
 	return (0);
-}
+}*/
