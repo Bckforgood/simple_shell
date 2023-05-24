@@ -28,7 +28,7 @@ int check_cmd(char **argv, char **env)
 		Path(env, argv);
 	return (0);
 }
-/***
+/**
  * main - entry point of the shell
  * @ac: number of arguments
  * @av: array of arguments
