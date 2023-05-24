@@ -19,6 +19,7 @@ char *_strcat(char *d, char *s);
 char *_strdup(char *s);
 char *_memcpy(char *d, char *s, unsigned int n);
 int check_cmd(char **argv, char **env);
-int main(__attribute__((unused)) int ac,
-		__attribute__((unused)) char **av, char **env);
+int main();
+/*int main(__attribute__((unused)) int ac,
+		__attribute__((unused)) char **av, char **env);*/
 #endif
