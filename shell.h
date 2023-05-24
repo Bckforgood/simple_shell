@@ -12,7 +12,7 @@
 
 
 extern char **environ;
-
+int exitShell(void);
 int _putchar(char c);
 int _strcmp(char *s1, char *s2);
 int shell(char **argv);
