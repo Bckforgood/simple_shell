@@ -1,5 +1,4 @@
 #include "shell.h"
-#include <string.h>
 
 /**
  * exitShell - Exits the shell.
