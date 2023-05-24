@@ -1,16 +1,6 @@
 #include "shell.h"
 
 /**
- * exitShell - Exits the shell.
- *
- * Return: Always returns 0.
- */
-int exitShell(void)
-{
-    exit(0);
-}
-
-/**
  * check_cmd - Checks and executes a command based on its availability.
  * @argv: The command and its arguments.
  * @env: The environment variables.
@@ -52,10 +42,19 @@ int check_cmd(char **argv, char **env)
         Path(env, argv);
     return 0;
 }
-
-
-
-
+/**
+ * exitShell - Exits the shell program.
+ * @argv: The command and its arguments.
+ * @line: The input line.
+ *
+ * Return: Always returns 0.
+ */
+int exitShell(char *argv[], char *line)
+{
+    free(line);
+    free(argv);
+    exit(0);
+}
 /**
  * main - Entry point of the shell program.
  * @ac: The number of arguments.
@@ -98,11 +97,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
             argv[i] = strtok(NULL, " \n");
         }
         if (_strcmp("exit", argv[0]) == 0)
-        {
-            free(line);
-            free(argv);
-	    exitShell();
-        }
+		exitShell(argv, line);
         check_cmd(argv, env);
         free(argv);
         i = 0;
