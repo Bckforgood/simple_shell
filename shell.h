@@ -13,7 +13,7 @@
 
 
 extern char **environ;
-
+int exitShell(char *argv[], char *line);
 int _putchar(char c);
 int _strcmp(char *s1, char *s2);
 int shell(char **argv);
