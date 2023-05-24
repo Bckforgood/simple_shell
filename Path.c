@@ -14,7 +14,8 @@
  */
 int Path(char **env, char **argv)
 {
-	unsigned int i, j = 0;
+	unsigned int i;
+	int j;
 	char *path, *ele, *ch = "/", *str = NULL;
 	struct stat st;
 	char result[100];
