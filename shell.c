@@ -7,7 +7,7 @@
  */
 int shell(char **argv)
 {
-	pit_t pid;
+	pid_t pid;
 	int stats;
 
 	pid = fork();
@@ -19,11 +19,11 @@ int shell(char **argv)
 	}
 	else if (pid == 0)
 	{
-		execeve(argv[0], argv, environ);
+		execve(argv[0], argv, environ);
 		perror("Error:");
 		exit(EXIT_FAILURE);
 	}
 	else
-		waitpid(pid, &status, 0);
+		waitpid(pid, &stats, 0);
 	return (0);
 }
