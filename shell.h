@@ -16,7 +16,6 @@ extern char **environ;
 int _putchar(char c);
 int _strcmp(char *s1, char *s2);
 int shell(char **argv);
-int exitShell(char *argv[], char *line);
 int Path(char **env, char **argv);
 char *_strcpy(char *d, char *s);
 char *_strcat(char *d, char *s);
