@@ -1,6 +1,15 @@
 #include "shell.h"
 #include <string.h>
-
+/**
+ * exitShell - Exits the shell.
+ *
+ * Return: Always returns 0.
+ 
+int exitShell(void)
+{
+    exit(0);
+}
+*/
 /**
  * check_cmd - Checks and executes a command based on its availability.
  * @argv: The command and its arguments.
@@ -96,6 +105,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
         }
         check_cmd(argv, env);
         free(argv);
+		/*exitShell();*/
         i = 0;
     }
     return 0;
