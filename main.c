@@ -1,14 +1,4 @@
 #include "shell.h"
-#include <string.h>
-/**
- * exitShell - Exits the shell.
- *
- * Return: Always returns 0.
- */ 
-int exitShell(void)
-{
-    exit(0);
-}
 
 /**
  * check_cmd - Checks and executes a command based on its availability.
@@ -101,7 +91,6 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
         {
             free(line);
             free(argv);
-	    exitShell();
             break;
         }
         check_cmd(argv, env);
