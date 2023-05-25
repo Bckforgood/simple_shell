@@ -13,7 +13,9 @@
 
 
 extern char **environ;
+int _puts(char *c);
 int exitShell(char *argv[], char *line);
+int _atoi(char *s);
 int _putchar(char c);
 int _strcmp(char *s1, char *s2);
 int shell(char **argv);
