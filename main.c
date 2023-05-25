@@ -28,7 +28,7 @@ int check_cmd(char **argv, char **env)
     {
         if (stat(argv[0], &fs) != -1)
         {
-            if (fs.st_mode == 16877)
+            if (S_ISDIR(fs.st_mode))
             {
                 write(STDOUT_FILENO, "bash :", 7);
                 write(STDOUT_FILENO, argv[0], strlen(argv[0]));
@@ -42,9 +42,6 @@ int check_cmd(char **argv, char **env)
         Path(env, argv);
     return 0;
 }
-
-
-
 
 /**
  * main - Entry point of the shell program.
@@ -76,7 +73,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
         }
         if (*line == '\n')
             continue;
-        argv = malloc(sizeof(char) * input * 5);
+        argv = malloc(sizeof(char *) * input * 5);
         if (argv == NULL)
             return 0;
         argv[0] = strtok(line, " \n");
@@ -99,3 +96,4 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
     }
     return 0;
 }
+
