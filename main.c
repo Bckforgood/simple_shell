@@ -43,8 +43,33 @@ int check_cmd(char **argv, char **env)
     return 0;
 }
 
+/**
+ * exit_shell - Exits the shell with the specified status.
+ * @argv: The command and its arguments.
+ *
+ * Return: Does not return.
+ */
+void exit_shell(char **argv)
+{
+    int status;
+    int i;
 
-
+    if (argv[1] != NULL)
+    {
+        status = atoi(argv[1]);
+        for (i = 0; argv[i] != NULL; i++)
+            free(argv[i]);
+        free(argv);
+        exit(status);
+    }
+    else
+    {
+        for (i = 0; argv[i] != NULL; i++)
+            free(argv[i]);
+        free(argv);
+        exit(0);
+    }
+}
 
 /**
  * main - Entry point of the shell program.
@@ -76,26 +101,22 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
         }
         if (*line == '\n')
             continue;
-        argv = malloc(sizeof(char) * input * 5);
+        argv = malloc(sizeof(char *) * (input * 5));
         if (argv == NULL)
             return 0;
         argv[0] = strtok(line, " \n");
         if (!argv[0])
             continue;
-        while (argv[i])
-        {
+        i = 1;
+        while ((argv[i] = strtok(NULL, " \n")))
             i++;
-            argv[i] = strtok(NULL, " \n");
-        }
         if (_strcmp("exit", argv[0]) == 0)
         {
-            free(line);
-            free(argv);
-            break;
+            exit_shell(argv);
         }
         check_cmd(argv, env);
         free(argv);
         i = 0;
     }
-    return 0;
+    return (0);
 }
