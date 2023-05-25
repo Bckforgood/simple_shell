@@ -24,9 +24,9 @@ int Path(char **env, char **argv)
 	}
 	ele = malloc(sizeof(env[i]));
 	if (ele == NULL)
-		return (0);
-	ele =  strtok(NULL
-			, ":");
+		return 0;
+	ele =  strtok(NULL, ":");
+
 	while (ele)
 	{
 		_strcpy(result, ele);
@@ -36,11 +36,11 @@ int Path(char **env, char **argv)
 		{	argv[0] = result;
 			shell(argv);
 			ele = '\0';
-			return (0);
+			return 0;
 		}
 		j++;
 		ele = strtok(NULL, ":");
 	}
-	return (0);
+	return 0;
 }
 
