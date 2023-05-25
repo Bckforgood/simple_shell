@@ -27,4 +27,7 @@ char *_memcpy(char *d, char *s, unsigned int n);
 int check_cmd(char **argv, char **env);
 int main(__attribute__((unused)) int ac,
 		__attribute__((unused)) char **av, char **env);
+
+char *find_command(char *command);
+
 #endif
