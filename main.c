@@ -23,10 +23,6 @@ int check_cmd(char **argv, char **env)
         }
         return 0;
     }
-    if (_strcmp("exit", argv[0]) == 0)
-    {
-        exit_shell();
-    }
 
     if (access(argv[0], F_OK) == 0)
     {
