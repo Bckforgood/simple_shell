@@ -42,19 +42,10 @@ int check_cmd(char **argv, char **env)
         Path(env, argv);
     return 0;
 }
-/**
- * exitShell - Exits the shell program.
- * @argv: The command and its arguments.
- * @line: The input line.
- *
- * Return: Always returns 0.
- */
-int exitShell(char *argv[], char *line)
-{
-    free(line);
-    free(argv);
-    exit(0);
-}
+
+
+
+
 /**
  * main - Entry point of the shell program.
  * @ac: The number of arguments.
@@ -97,7 +88,11 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
             argv[i] = strtok(NULL, " \n");
         }
         if (_strcmp("exit", argv[0]) == 0)
-		exitShell(argv, line);
+        {
+            free(line);
+            free(argv);
+            break;
+        }
         check_cmd(argv, env);
         free(argv);
         i = 0;
