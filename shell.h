@@ -27,5 +27,7 @@ int main(__attribute__((unused)) int ac,
 		__attribute__((unused)) char **av, char **env);
 
 char *find_command(char *command);
+void exit_shell(void);
+
 
 #endif
