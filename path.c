@@ -1,4 +1,10 @@
-#include"shell.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/wait.h>
+#include "shell.h"
+#include <sys/stat.h>
 /**
  * Path - Search for a command in the PATH environment variable and execute it.
  * @env: The environment variables.
@@ -24,9 +30,9 @@ int Path(char **env, char **argv)
 	}
 	ele = malloc(sizeof(env[i]));
 	if (ele == NULL)
-		return 0;
-	ele =  strtok(NULL, ":");
-
+		return (0);
+	ele =  strtok(NULL
+			, ":");
 	while (ele)
 	{
 		_strcpy(result, ele);
@@ -36,11 +42,10 @@ int Path(char **env, char **argv)
 		{	argv[0] = result;
 			shell(argv);
 			ele = '\0';
-			return 0;
+			return (0);
 		}
 		j++;
 		ele = strtok(NULL, ":");
 	}
-	return 0;
+	return (0);
 }
-
