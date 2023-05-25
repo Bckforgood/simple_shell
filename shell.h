@@ -7,10 +7,14 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <stdbool.h>
+
+
+
 
 extern char **environ;
-int _puts(char *c);
-int _atoi(char *s);
+/* ----------More tools prototype--------*/
+
 int _putchar(char c);
 int _strcmp(char *s1, char *s2);
 int shell(char **argv);
@@ -20,8 +24,5 @@ char *_strcat(char *d, char *s);
 char *_strdup(char *s);
 char *_memcpy(char *d, char *s, unsigned int n);
 int check_cmd(char **argv, char **env);
-int main(__attribute__((unused)) int ac,
-		__attribute__((unused)) char **av, char **env);
-int cd_builtin(char **argv, char **env);
-int cd(char **argv, char **env);
+
 #endif
